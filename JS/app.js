@@ -1,27 +1,29 @@
 'use strict'
  
 var productsName = [
-    'bag',
-    'banana',
-    'bathroom',
-    'boots',
-    'breakfast',
-    'bubblegum',
-    'chair',
-    'cthulhu',
-    'dog-duck',
-    'dragon',
-    'pen',
-    'pet-sweep',
-    'scissors',
-    'shark',
-    'sweep',
-    'tauntaun',
-    'unicorn',
-    'usb',
-    'water-can',
-    'wine-glass'
+  "bag.jpg",
+  "banana.jpg",
+  "bathroom.jpg",
+  "boots.jpg",
+  "breakfast.jpg",
+  "bubblegum.jpg",
+  "chair.jpg",
+  "cthulhu.jpg",
+  "dog-duck.jpg",
+  "dragon.jpg",
+  "pen.jpg",
+  "pet-sweep.jpg",
+  "scissors.jpg",
+  "shark.jpg",
+  "sweep.png",
+  "tauntaun.jpg",
+  "unicorn.jpg",
+  "usb.gif",
+  "water-can.jpg",
+  "wine-glass.jpg",
 ] ;
+var clicks = [];
+var products = [];
 
 //(1) get the images
 var leftImage = document.querySelector('#leftImage');
@@ -30,15 +32,15 @@ var middleImage= document.querySelector('#middleImage');
 var imageSection = document.querySelector('#imagesSection');
 
 //(2) add src,alt,title to the images to test if everything is working
-leftImage.src = `Images/${productsName[0]}.jpg`;
+leftImage.src = `Images/${productsName[0]}`;
 leftImage.alt = productsName[0];
 leftImage.title = productsName[0];
 
-middleImage.setAttribute('src',`Images/${productsName[1]}.jpg`);
+middleImage.setAttribute('src',`Images/${productsName[1]}`);
 middleImage.setAttribute('alt',productsName[1]);
 middleImage.setAttribute('title',productsName[1]);
 
-rightImage.setAttribute('src',`Images/${productsName[2]}.jpg`);
+rightImage.setAttribute('src',`Images/${productsName[2]}`);
 rightImage.setAttribute('alt',productsName[2]);
 rightImage.setAttribute('title',productsName[2]);
 
@@ -48,7 +50,7 @@ function Photo(name) {
     this.name = name;
     this.clicks = 0;
     this.views = 0;
-    this.imagePath = `Images/${this.name}.jpg`;
+    this.imagePath = `Images/${this.name}`;
     Photo.all.push(this);
   }
   Photo.all =[];
@@ -70,19 +72,19 @@ function render () {
  
 
   leftImage.setAttribute('src',leftProduct.imagePath);
-  leftImage.setAttribute('alt',leftProduct.name);
-  leftImage.setAttribute('title',leftProduct.name);
+  leftImage.setAttribute('alt',(leftProduct.name).split(".", 1));
+  leftImage.setAttribute('title',(leftProduct.name).split(".", 1));
   
   middleImage.setAttribute('src',middleProduct.imagePath);
-  middleImage.setAttribute('alt',middleProduct.name);
-  middleImage.setAttribute('title',middleProduct.name);
+  middleImage.setAttribute('alt',(middleProduct.name).split(".", 1));
+  middleImage.setAttribute('title',(middleProduct.name).split(".", 1));
 
   rightImage.setAttribute('src',rightProduct.imagePath);
-  rightImage.setAttribute('alt',rightProduct.name);
-  rightImage.setAttribute('title',rightProduct.name);
+  rightImage.setAttribute('alt',(rightProduct.name).split(".", 1));
+  rightImage.setAttribute('title',(rightProduct.name).split(".", 1))
 
 
-  if(leftImage.src === rightImage.src|| rightImage.src === middleImage.src || middleImage.src===leftImage.src ) {
+  if(leftProduct === rightProduct|| rightProduct=== middleProduct || middleProduct===leftProduct ) {
     render () ;
 
  }
@@ -107,7 +109,6 @@ function trackClicksOnPhoto(event) {
       rightProduct.clicks++;}
         
 
-      
       totalClicks++;
       leftProduct.views++;
       middleProduct.views++;
@@ -119,6 +120,7 @@ function trackClicksOnPhoto(event) {
     console.log('more than 25 clicks');
     imageSection.removeEventListener('click',trackClicksOnPhoto);
     render2();
+  // render3();
   }
 }
 
@@ -126,6 +128,7 @@ function render2() {
     var ulE1 = document.getElementById('summary');
     for (var i =0; i<Photo.all.length ; i++) {
       var liE1 = document.createElement('li');
+      Photo.all[i].name=(Photo.all[i].name).split(".")[0];
       liE1.textContent = `${Photo.all[i].name} has ${Photo.all[i].clicks} clicks and ${Photo.all[i].views} views`;
       ulE1.appendChild(liE1);
     }
@@ -144,3 +147,60 @@ function render2() {
 function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
+
+function editTheChart (){
+ 
+for (var i=0 ; i< Photo.all.length ; i++)
+{
+  products.push(Photo.all[i].name);
+  clicks.push(Photo.all[i].clicks);
+  
+
+}
+}
+
+function render3() {
+var ctx = document.getElementById('myChart').getContext('2d');
+editTheChart ();
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: productsName,
+        datasets: [{
+            label: '# of Votes',
+            data: clicks,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+}
+
+
+
+
+
