@@ -43,7 +43,7 @@ rightImage.setAttribute('alt',productsName[2]);
 rightImage.setAttribute('title',productsName[2]);
 
 
-//(3_1) create constructor function for the goats
+//(3_1) create constructor function for the products
 function Photo(name) {
     this.name = name;
     this.clicks = 0;
@@ -53,12 +53,12 @@ function Photo(name) {
   }
   Photo.all =[];
 
-  //(3_2) instantiate objects for all the goats one shot
+  //(3_2) instantiate objects for all the products one shot
 for(var i =0; i<productsName.length; i++) {
     new Photo(productsName[i]);
   }
 
-  //(4) render 2 random images
+  //(4) render 3 random images
 var leftProduct, rightProduct, middleProduct;
 function render () {
    leftProduct = Photo.all[randomNumber(0,Photo.all.length-1)];
@@ -144,8 +144,3 @@ function render2() {
 function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
-
-
-
-
-
