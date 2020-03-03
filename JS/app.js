@@ -295,6 +295,7 @@ var myChart = new Chart(ctx, {
         }
     }
 });
+<<<<<<< HEAD
 }
 
 
@@ -305,3 +306,6 @@ var myChart = new Chart(ctx, {
 
      
 
+=======
+}
+>>>>>>> 787f592b84dc3bb544f64cb52f0364589eb9c5a8
