@@ -161,8 +161,6 @@ function trackClicksOnPhoto(event) {
     console.log('more than 25 clicks');
     imageSection.removeEventListener('click',trackClicksOnPhoto);
     /////////////////////conflict
-    render2();
-  // render3();
     // render2();
   render3();
   // updateChart () ;
@@ -295,7 +293,6 @@ var myChart = new Chart(ctx, {
         }
     }
 });
-<<<<<<< HEAD
 }
 
 
@@ -306,6 +303,3 @@ var myChart = new Chart(ctx, {
 
      
 
-=======
-}
->>>>>>> 787f592b84dc3bb544f64cb52f0364589eb9c5a8
