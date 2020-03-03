@@ -24,6 +24,8 @@ var productsName = [
 ] ;
 var clicks = [];
 var products = [];
+var diff = [];
+var howmanyviews=[];
 
 //(1) get the images
 var leftImage = document.querySelector('#leftImage');
@@ -54,6 +56,21 @@ function Photo(name) {
     Photo.all.push(this);
   }
   Photo.all =[];
+function updateChart() {
+  var productString = JSON.stringify(Photo.all);
+  localStorage.setItem('myChart', productString); }
+
+  function getProducts() {
+    var productString = localStorage.getItem('myChart');
+    console.log(productString);
+    if(productString) {
+      Photo.all = JSON.parse(productString);
+      console.log(Photo.all);
+    render3(); }
+     }
+
+
+
 
   //(3_2) instantiate objects for all the products one shot
 for(var i =0; i<productsName.length; i++) {
@@ -71,6 +88,20 @@ function render () {
   console.log(rightProduct);
  
 
+
+
+
+  if(leftProduct === rightProduct|| rightProduct=== middleProduct || middleProduct===leftProduct || diff.includes(leftProduct.imagePath) || diff.includes(middleProduct.imagePath) ||diff.includes(rightProduct.imagePath) ) {
+    render () ; 
+    // leftProduct = Photo.all[randomNumber(0,Photo.all.length-1)];
+    // console.log(leftProduct);
+    // middleProduct = Photo.all[randomNumber(0,Photo.all.length-1)];
+    // console.log(middleProduct);
+    //  rightProduct = Photo.all[randomNumber(0,Photo.all.length-1)];
+    // console.log(rightProduct);
+   }
+    
+
   leftImage.setAttribute('src',leftProduct.imagePath);
   leftImage.setAttribute('alt',(leftProduct.name).split(".", 1));
   leftImage.setAttribute('title',(leftProduct.name).split(".", 1));
@@ -82,21 +113,18 @@ function render () {
   rightImage.setAttribute('src',rightProduct.imagePath);
   rightImage.setAttribute('alt',(rightProduct.name).split(".", 1));
   rightImage.setAttribute('title',(rightProduct.name).split(".", 1))
-
-
-
-  if(leftProduct === rightProduct|| rightProduct=== middleProduct || middleProduct===leftProduct ) {
-    render () ; }
-
     
-  var A = leftProduct;
-  var B= middleProduct;
-  var C=rightProduct
+  // var A = leftProduct;
+  // var B= middleProduct;
+  // var C=rightProduct
 
-  if (A === leftProduct && C === rightProduct && B ===middleProduct ) {
-    console.log("khdbhcjd")
-  }
+  // if (A === leftProduct && C === rightProduct && B ===middleProduct ) {
+  //   console.log("khdbhcjd")
+  // }
 
+  diff[0]= leftProduct.imagePath;
+  diff[1]= rightProduct.imagePath;
+  diff[2]= middleProduct.imagePath;
 }
 
 render ();
@@ -128,6 +156,7 @@ function trackClicksOnPhoto(event) {
     imageSection.removeEventListener('click',trackClicksOnPhoto);
     // render2();
   render3();
+  // updateChart () ;
   }
 }
 
@@ -161,7 +190,7 @@ for (var i=0 ; i< Photo.all.length ; i++)
 {
   products.push(Photo.all[i].name);
   clicks.push(Photo.all[i].clicks);
-  
+  howmanyviews.push(Photo.all[i].views);
 
 }
 }
@@ -177,23 +206,75 @@ var myChart = new Chart(ctx, {
             label: '# of Votes',
             data: clicks,
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                'rgba(200, 99, 132, 3)',
+                'rgba(54, 162, 235, 3)',
+                'rgba(82, 206, 86, 3)',
+                'rgba(93, 192, 192, 3)',
+                'rgba(342, 102, 255, 3)',
+                'rgba(222, 94, 64, 3)',
+                'rgba(423, 29, 132, 3)',
+                'rgba(54, 45, 235, 3)',
+                'rgba(255, 200, 86, 3)',
+                'rgba(75,109, 192, 3)',
+                'rgba(153, 34, 255, 3)',
+                'rgba(53, 324, 64, 3)',
+                'rgba(97, 99, 132, 3)',
+                'rgba(54, 87, 235, 3)',
+                'rgba(255, 65, 86, 3)',
+                'rgba(75, 34, 192, 3)',
+                'rgba(153, 96, 255, 3)',
+                'rgba(90, 84, 64, 3)',
+                'rgba(63, 36, 255,3)',
+                'rgba(245, 95, 64, 3)'
+
+                
+
             ],
             borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+                // 'rgba(255, 99, 132, 3)',
+                // 'rgba(54, 162, 235, 3)',
+                // 'rgba(255, 206, 86,3)',
+                // 'rgba(75, 192, 192, 3)',
+                // 'rgba(153, 102, 255, 3)',
+                // 'rgba(255, 159, 64, 3)'
             ],
             borderWidth: 1
-        }]
+        },{
+          label: '# of Views',
+          data: howmanyviews ,
+          backgroundColor: [
+            'rgba(200, 99, 132, 3)',
+            'rgba(54, 162, 235, 3)',
+            'rgba(82, 206, 86, 3)',
+            'rgba(93, 192, 192, 3)',
+            'rgba(342, 102, 255, 3)',
+            'rgba(222, 94, 64, 3)',
+            'rgba(423, 29, 132, 3)',
+            'rgba(54, 45, 235, 3)',
+            'rgba(255, 200, 86, 3)',
+            'rgba(75,109, 192, 3)',
+            'rgba(153, 34, 255, 3)',
+            'rgba(53, 324, 64, 3)',
+            'rgba(97, 99, 132, 3)',
+            'rgba(54, 87, 235, 3)',
+            'rgba(255, 65, 86, 3)',
+            'rgba(75, 34, 192, 3)',
+            'rgba(153, 96, 255, 3)',
+            'rgba(90, 84, 64, 3)',
+            'rgba(63, 36, 255,3)',
+            'rgba(245, 95, 64, 3)'
+
+          ],
+          borderColor: [
+              // 'rgba(98, 99, 132, 3)',
+              // 'rgba(54, 162, 235, 3)',
+              // 'rgba(65, 206, 86,3)',
+              // 'rgba(75, 192, 192, 3)',
+              // 'rgba(153, 102, 255, 3)',
+              // 'rgba(34, 159, 64, 3)'
+          ],
+          borderWidth: 1
+      }]
     },
     options: {
         scales: {
@@ -206,3 +287,12 @@ var myChart = new Chart(ctx, {
     }
 });
 }
+
+
+
+      
+      
+      // getProducts ();
+
+     
+
