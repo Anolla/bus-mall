@@ -154,7 +154,7 @@ function trackClicksOnPhoto(event) {
   } else {
     console.log('more than 25 clicks');
     imageSection.removeEventListener('click', trackClicksOnPhoto);
-    // render2();
+    render2();
     render3();
     updateChart();
   }
