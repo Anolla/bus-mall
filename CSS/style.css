@@ -1,4 +1,94 @@
-img {
-    width : 200px;
+body {
+    background-color: rgb(220, 255, 167);
 }
 
+header {
+    background-color: greenyellow;
+}
+
+header nav {
+    background-color: grey;
+}
+
+header nav ul li {
+    display: inline;
+}
+
+nav a {
+    text-decoration: none;
+    color: greenyellow;
+    font-size: larger;
+    padding-left: 8px;
+}
+
+nav a:hover,
+a:active {
+    opacity: 50%;
+}
+
+#imagesSection img {
+    width: 350px;
+    height: 400px;
+    border: 5px solid greenyellow;
+    border-radius: 50%;
+}
+
+#catalog {
+    background-color: greenyellow;
+    border: 8px solid grey;
+}
+
+ul {
+    background: gray;
+    border: greenyellow 8px solid;
+    padding: 20px;
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#cartA a {
+    text-decoration: none;
+    color: darkgray;
+    padding: 5px;
+}
+
+#cartA a:hover {
+    background-color: greenyellow;
+}
+
+#cartA h3 {
+    width: 300px;
+    height: 60px;
+    background-color: gray;
+    position: relative;
+    animation-name: example;
+    animation-duration: 4s;
+}
+
+@keyframes example {
+    0% {
+        background-color: red;
+        left: 0px;
+        top: 0px;
+    }
+    25% {
+        background-color: yellow;
+        left: 200px;
+        top: 0px;
+    }
+    50% {
+        background-color: blue;
+        left: 200px;
+        top: 300px;
+    }
+    75% {
+        background-color: greenyellow;
+        left: 0px;
+        top: 300px;
+    }
+    100% {
+        background-color: gray;
+        left: 0px;
+        top: 0px;
+    }
+}
