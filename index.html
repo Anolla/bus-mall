@@ -1,39 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>lab 11</title>
-    <link rel="stylesheet" href="CSS/style.css">
-</head>
-<body>
-    <header>
-        <h1>Vote for your favorite Product</h1>
-        <nav>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-          <li><a href="cart.html">Cart</a><span id="itemCount"></span></li>
-            
-          </ul>
-        </nav>
-      </header>
-      <main>
-        <section id="imagesSection">
-            
-          <img id="leftImage" src="" alt="" title="" />
-          <img id='middleImage' src='' alt='' title='' />
-          <img id="rightImage" src="" alt="" title="" />
+<html>
 
-        </section>
-  
-        <ul id='summary'>
-  
-        </ul>
-      
-      </main>
-      <canvas id="myChart" ></canvas>
-      <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-      <script src="/JS/app.js"></script>
-      
+<head>
+  <title>Bus Mall Store</title>
+  <!-- <link rel="stylesheet" href="css/reset.css" /> -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <header>
+    <h1>Bus Mall Store</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="cart.html">Cart</a><span id="itemCount"></span></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="imagesSection">
+
+      <img id="leftImage" src="" alt="" title="" />
+      <img id='middleImage' src='' alt='' title='' />
+      <img id="rightImage" src="" alt="" title="" />
+
+    </section>
+
+    <ul id='summary'>
+
+    </ul>
+
+    <section class="deck col-1">
+      <div class="card">
+        <header>
+          <h1>Shop Our Catalog</h1>
+        </header>
+        <div class="copy">
+          <ol>
+            <li>Select an item from our catalog and indicate how many you would like to purchase.</li>
+            <li>Once you've made your selection, click the "Add to Cart" button</li>
+            <li>When you are ready to purchase, click the "Cart" link above to view your cart and check out</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="deck col-2">
+      <div class="card">
+        <div class="copy">
+          <form id="catalog">
+            <fieldset>
+              <legend>Catalog</legend>
+              <label>
+                <span>Item</span>
+                <select id="items"></select>
+              </label>
+              <label>
+                <span>Quantity</span>
+                <input id="quantity" type="number" />
+              </label>
+              <input type="submit" value="Add To Cart" />
+            </fieldset>
+          </form>
+        </div>
+      </div>
+      <div class="card" id="cartContents"></div>
+    </section>
+
+
+  </main>
+
+  <footer>
+    <p>&copy;2018 Code Fellows 201d33</p>
+  </footer>
+
+  <canvas id="myChart"></canvas>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+
+  <script src="/JS/app.js"></script>
+  <script src='js/catalog.js'></script>
+
+
 </body>
+
 </html>
