@@ -11,10 +11,8 @@
   <header>
     <h1>Bus Mall Store</h1>
     <nav>
-      <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="cart.html">Cart</a><span id="itemCount"></span></li>
-      </ul>
     </nav>
   </header>
   <main>
@@ -26,10 +24,7 @@
 
     </section>
 
-    <ul id='summary'>
-
-    </ul>
-
+    
     <section class="deck col-1">
       <div class="card">
         <header>
@@ -44,7 +39,7 @@
         </div>
       </div>
     </section>
-
+    
     <section class="deck col-2">
       <div class="card">
         <div class="copy">
@@ -66,21 +61,24 @@
       </div>
       <div class="card" id="cartContents"></div>
     </section>
+    
+    <ul id='summary'>
 
-
+    </ul>
+    
   </main>
 
+  
+  <canvas id="myChart"></canvas>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  
+  <script src="/JS/app.js"></script>
+  <script src='js/catalog.js'></script>
+  
+  
   <footer>
     <p>&copy;2018 Code Fellows 201d33</p>
   </footer>
-
-  <canvas id="myChart"></canvas>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-
-  <script src="/JS/app.js"></script>
-  <script src='js/catalog.js'></script>
-
-
 </body>
 
 </html>

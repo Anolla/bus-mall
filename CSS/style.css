@@ -1,5 +1,55 @@
+
+body {
+    width: 80%;
+    margin : 0 auto ;
+    background-color: lightgrey;
+}
+
 img {
     width : 200px;
     height: 200px;
+   margin-left: 100px;
+   margin-top: 10px;
+   
+}
+
+
+ul li {
+     
+
+    margin: 10px;
+    padding: 5px;
+}
+
+h1 {
+    text-align: center;
+
+}
+
+header{
+    text-align: center;
+    background-color: gray;
+    margin-top: -21px;
+}
+
+nav>li {
+    display: inline-block;
+
+ margin-right: 20px;
+   text-align: center;
+   font-size: large;
+   margin-bottom: 10px;
+
+   
+}
+
+
+a{
+    text-decoration: none;
+    color:orangered
+}
+
+#cartContents {
+    border:2px solid orangered;
 }
 

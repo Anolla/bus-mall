@@ -63,10 +63,10 @@ function updateChart() {
 
 function getProducts() {
   var productString = localStorage.getItem('myChart');
-  console.log(productString);
+  // console.log(productString);
   if (productString) {
     Photo.all = JSON.parse(productString);
-    console.log(Photo.all);
+    // console.log(Photo.all);
     render3();
     render2();
   }
@@ -316,7 +316,7 @@ getProducts();
 //   this.quantity = quantity;
 // };
 
-// // Product contructor.
+// Product contructor.
 // var Product = function(filePath, name) {
 //   this.filePath = filePath;
 //   this.name = name;
